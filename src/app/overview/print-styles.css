@@ -1,0 +1,16 @@
+/* print-styles.css */
+@media print {
+  body {
+    font-size: 12pt; /* Adjust font size and other styles as needed */
+  }
+
+  .content {
+    display: none; /* Hide regular content during printing */
+  }
+
+  .print-section {
+    display: block; /* Display the print-friendly section during printing */
+  }
+
+  /* Add other print-specific styles as needed */
+}

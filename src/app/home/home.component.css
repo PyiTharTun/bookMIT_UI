@@ -1,0 +1,55 @@
+/* table.tb { */
+  /* background-color: lime; */
+  /* margin: 20px 20px 20px 20px; */
+  /* padding: 20px 20px 20px 20px; */
+/* } */
+
+table {
+  border-collapse: separate;
+  border-spacing: 15px;
+  /* *border-collapse: expression('separate', cellSpacing='10px'); */
+}
+input.ng-invalid.ng-touched{
+  border: 1px red solid;
+}
+span {
+  font-size: smaller;
+  width: 20px; /* Adjust the width as needed */
+  height: 10px; /* Adjust the height as needed */
+  padding: 5px; /* Adjust the padding as needed */
+  margin: 5px;
+}
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.pretty-title {
+  font-size: 24px;
+  color: #0289aa;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: 2px solid #0289aa;
+  padding-bottom: 5px;
+}
+.custom-primary {
+  background-color: #0289aa;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+.custom-primary:hover {
+  background-color: #02a7d0;
+}
+
+.large-input {
+  width: 185px;
+
+}
+.radio-separator {
+  margin-right: 10px;  /* Adjust the margin as needed */
+}
+
+
+
+

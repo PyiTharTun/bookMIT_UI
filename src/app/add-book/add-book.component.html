@@ -1,0 +1,154 @@
+<td>
+  <button
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+    (click)="myAPI()"
+  >
+    New
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Add New Book
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form class="" >
+            <table>
+              <tr>
+                <td>
+                  <!-- <input type="" value="New" class="btn btn-primary" /> -->
+                </td>
+                <td>
+                  <!-- <input type="submit" value="Save"  name="save"/> -->
+                  <!-- <input type="submit" value="Delete" /> -->
+                </td>
+              </tr>
+              <tr>
+                <td>Order ID:</td>
+                <td>
+                  <input
+                    type="text"
+                    placeholder="ID"
+                    name="orderID"
+                    disabled
+                    [(ngModel)]="formData.orderID"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Counter No:</td>
+                <td>
+                  <input
+                    type="number"
+                    placeholder="Counter"
+                    name="counterNo"
+                    [(ngModel)]="formData.counterNo"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Cashier Name:</td>
+                <td>
+                  <input
+                    type="text"
+                    placeholder="name"
+                    name="cashierName"
+                    [(ngModel)]="formData.cashierName"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Order Date:</td>
+                <td>
+                  <input type="date" name="orderDate"  />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <input type="radio" name="refund" (change)="refundOn(true)" />Refund
+                  <input
+                    type="radio"
+                    name="refund"
+                    (change)="refundOn(false)"
+                  />Not Refund
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <label for="discount"> Discount:</label>
+                  <input
+                    type="checkbox"
+                    id="discount"
+                    name="discount"
+                    [(ngModel)]="formData.discount"
+                  />
+                </td>
+                <td>
+                  %
+                  <input
+                    name="discpercentage"
+                    type="text"
+                    id="discpercentage"
+                    placeholder=""
+                    [(ngModel)]="formData.discPercentage"
+                    [disabled]="!formData.discount"
+                  />
+                </td>
+              </tr>
+              <!--
+                        [(ngModel)]="formData.discount"
+                        [(ngModel)]="formData.dispercentage"
+                      [disabled]="!formData.discount" -->
+              <!-- <tr>
+                      (click)="DiscountOn()
+                      <td>Education Qualification:</td>
+                      <td>
+                        <select>
+                          <option>Select Option</option>
+                          <option>10+2</option>
+                          <option>Graduation</option>
+                          <option>Postgraduation</option>
+                        </select>
+                      </td>
+                    </tr> -->
+            </table>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary" name="save">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</td>

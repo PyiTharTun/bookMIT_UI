@@ -1,0 +1,89 @@
+<nav class="navbar bg-body-tertiary content">
+  <div class="container-fluid">
+    <button class="btn btn-light">
+      p
+      <img
+        src="../../assets//images/2000px-Monterey_Bay_Aquarium_Logo.svg.png"
+        alt="Logo"
+        width="35"
+        height="35"
+        class="d-inline-block align-text-top"
+      />
+      w
+    </button>
+    <form class="d-flex" role="search">
+      <button class="custom-primary btn" (click)="goToForm()">Add</button>
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name="searchText"
+        [(ngModel)]="searchText"
+      />
+      <button class="btn custom-primary" type="submit">Search</button>
+      <div class="dropdown">
+        <a
+          class="btn btn-light dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          ...
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <button
+              class="dropdown-item"
+              (click)="exportToExcel(APIdata, 'books')"
+              >export to Excel</button
+            >
+          </li>
+          <li>
+            <button class="dropdown-item" (click)="openFileInput()">Import from Excel</button>
+            <!-- Hidden file input -->
+            <input type="file" (input)="onFileChange($event)" #fileInput style="display: none;" />
+          </li>
+          <li><button class="dropdown-item" (click)="printDoc()" >print</button></li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</nav>
+
+
+<div class="print-section">
+  <table class="table"  >
+    <thead>
+      <tr>
+        <th *ngFor="let item of colList">
+          <h5>{{ item }}</h5>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let item of APIdata
+            | searchPipe : searchText
+            | paginate : { itemsPerPage: pageSize, currentPage: currentPage }
+        "
+        (dblclick)="goToEdit(item)"
+      >
+        <th scope="row">{{ item.orderID }}</th>
+        <td>{{ item.counterNo }}</td>
+        <td>{{ item.cashierName }}</td>
+        <td>{{ item.orderDate | date : "dd-MM-yyyy" }}</td>
+        <td>{{ item.refund }}</td>
+        <td>{{ item.discount }}</td>
+        <td>{{ item.discPercentage }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <pagination-controls
+  class="d-flex justify-content-center"
+  (pageChange)="currentPage = $event"
+  ></pagination-controls>

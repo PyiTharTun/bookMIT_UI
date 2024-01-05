@@ -1,0 +1,8 @@
+.custom-primary {
+  background-color: #0289aa;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+.custom-primary:hover {
+  background-color: #02a7d0;
+}
