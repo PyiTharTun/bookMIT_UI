@@ -4,6 +4,7 @@ import { booksFrame } from '../interface';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -35,13 +36,13 @@ export class HomeComponent implements OnInit {
     counterNo: null,
     cashierName: '',
     orderDate: this.current,
-    refund: false,
+    refund: "false",
     // noRefund: undefined,
     discount: false,
     discPercentage: null,
   };
   ngOnInit() {
-    console.log(!this.api.index);
+    // console.log(!this.api.index);
     // console.log(!this.api.newbook);
     //redirect user to Overview page if user not come from overview
     if (!(this.api.index + 1) && !this.api.newbook) {
@@ -89,10 +90,13 @@ export class HomeComponent implements OnInit {
     this.formData.cashierName = getOne[this.api.index]['cashierName'];
 
     let converDate = getOne[this.api.index]['orderDate'];
-    console.log(typeof converDate);
     this.formData.orderDate = converDate.slice(0, 10);
-    this.formData.refund = getOne[this.api.index]['refund'];
-
+    console.log( this.formData.refund, "this is refund before ");
+    console.log( getOne[this.api.index]['refund']);
+    //to check on radio input, boolean value from api return need to be string value
+    let apiRefund = getOne[this.api.index]['refund'];
+    this.formData.refund = apiRefund.toString();
+    console.log( this.formData.refund, "this is refund ");
     this.formData.discount = getOne[this.api.index]['discount'];
     this.formData.discPercentage = getOne[this.api.index]['discPercentage'];
   }
@@ -100,6 +104,7 @@ export class HomeComponent implements OnInit {
     if (this.api.newbook) {
       await this.createNew(this.formData);
       this.successMessage = 'Book successfully created!';
+      console.log(this.formData);
       this.clearInput();
     } else {
       this.api.movieSubscription = await this.api
@@ -108,7 +113,7 @@ export class HomeComponent implements OnInit {
           next: (res: any) => {
             console.log(res, 'response');
             this.successMessage = 'Book successfully updated!';
-
+            console.log(this.formData,"this is formData");
             this.router.navigateByUrl('overview');
           },
           error: (err: any) => {
@@ -149,7 +154,10 @@ export class HomeComponent implements OnInit {
             this.clearSuccessMessage();
             // this.APIdata.results = this.APIdata.results - 1;
             console.log(this.api.index);
-            this.displayOne('-');
+            // this.displayOne('-');
+            this.clearInput();
+            this.createNewBook();
+            this.api.newbook = true;
           },
           error: (err: any) => {
             this.error = err.error.errors;
@@ -162,9 +170,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  refundOn(value: boolean) {
-    return (this.formData.refund = value);
-  }
 
   routeToOverview() {
     this.router.navigateByUrl('overview');

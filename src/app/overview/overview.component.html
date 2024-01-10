@@ -11,8 +11,12 @@
       />
       w
     </button>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+
     <form class="d-flex" role="search">
-      <button class="custom-primary btn" (click)="goToForm()">Add</button>
+      <button class="custom-primary btn btn_space" (click)="goToForm()">Add</button>
       <input
         class="form-control me-2"
         type="search"
@@ -21,41 +25,43 @@
         name="searchText"
         [(ngModel)]="searchText"
       />
-      <button class="btn custom-primary" type="submit">Search</button>
-      <div class="dropdown">
-        <a
-          class="btn btn-light dropdown-toggle"
-          href="#"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          ...
-        </a>
+      <button class="btn custom-primary btn_space" type="submit">Search</button>
 
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li>
-            <button
-              class="dropdown-item"
-              (click)="exportToExcel(APIdata, 'books')"
-              >export to Excel</button
-            >
-          </li>
-          <li>
-            <button class="dropdown-item" (click)="openFileInput()">Import from Excel</button>
-            <!-- Hidden file input -->
-            <input type="file" (input)="onFileChange($event)" #fileInput style="display: none;" />
-          </li>
-          <li><button class="dropdown-item" (click)="printDoc()" >print</button></li>
-        </ul>
-      </div>
+      <button
+        type="button"
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
+        data-bs-title="export to excel file"
+        class="btn custom-primary btn_space"
+        (click)="exportToExcel(APIdata, 'books')"
+      >
+        Export
+      </button>
+      <button
+        class="btn custom-primary btn_space"
+        type="button"
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
+        data-bs-title="import from excel file"
+        (click)="openFileInput()"
+      >
+        Import
+      </button>
+      <!-- Hidden file input -->
+      <input
+        type="file"
+        accept=".xlsx, .xls"
+        (input)="onFileChange($event)"
+        #fileInput
+        style="display: none"
+      />
+      <button class="btn custom-primary btn_space" (click)="printDoc()">Print</button>
     </form>
   </div>
 </nav>
 
-
 <div class="print-section">
-  <table class="table"  >
+  <table class="table">
     <thead>
       <tr>
         <th *ngFor="let item of colList">
@@ -83,7 +89,7 @@
     </tbody>
   </table>
 </div>
-  <pagination-controls
+<pagination-controls
   class="d-flex justify-content-center"
   (pageChange)="currentPage = $event"
-  ></pagination-controls>
+></pagination-controls>

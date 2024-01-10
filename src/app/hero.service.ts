@@ -30,6 +30,9 @@ export class HeroService {
   create(body: any){
     return this.http.post(`http://localhost:4000/api/v1/books/save`, body);
   }
+  createBulk(body: any){
+    return this.http.post(`http://localhost:4000/api/v1/books/import`, body);
+  }
   update(body: any, orderID: any){
     return this.http.patch(`http://localhost:4000/api/v1/books/update/${orderID}`, body);
   }

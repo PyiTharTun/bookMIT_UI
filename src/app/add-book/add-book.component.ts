@@ -22,7 +22,7 @@ export class AddBookComponent implements OnInit {
     counterNo: 1,
     cashierName: 'Cashier Name',
     orderDate: this.current,
-    refund: false,
+    refund: "false",
     // noRefund: true,
     discount: false,
     discPercentage: 0,
@@ -56,9 +56,9 @@ export class AddBookComponent implements OnInit {
   }
   refundOn(value: boolean) {
     if (value == true) {
-      this.formData.refund = true;
+      this.formData.refund = "true";
     } else {
-      this.formData.refund = false;
+      this.formData.refund = "false";
     }
     console.log(this.formData.refund);
   }

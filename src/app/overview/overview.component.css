@@ -1,3 +1,5 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 .custom-primary {
   background-color: #0289aa;
   color: #fff;
@@ -5,4 +7,13 @@
 }
 .custom-primary:hover {
   background-color: #02a7d0;
+}
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.btn_space{
+  margin-left: 1px;
+  margin-right: 2px;
 }

@@ -49,7 +49,7 @@
         </button>
 
 
-        <button class="btn-outline-secondary btn"
+        <button class="custom-primary btn"
         (click)="clearInput()"
         style="margin-left: 5px;"
         > Clear </button>
@@ -59,7 +59,7 @@
           type="submit"
           name="deleteBtn"
           value="Delete"
-          class="btn btn-outline-danger float-middle"
+          class="btn custom-primary float-middle"
           style="margin-left: 5px;"
           (click)="deleteData()"
         >
@@ -72,6 +72,7 @@
       <td>Order ID:</td>
       <td>
         <input
+        class="large-input"
           type="number"
           placeholder="ID"
           name="orderID"
@@ -117,8 +118,9 @@
       <td>
         <input
           type="text"
+          class="large-input"
           name="cashierName"
-          placeholder="name"
+          placeholder="Name"
           [(ngModel)]="formData.cashierName"
           #cashierName="ngModel"
           required
@@ -169,7 +171,7 @@
 
 
           />
-          no refund
+          not refund
         </label>
       </td>
     </tr>

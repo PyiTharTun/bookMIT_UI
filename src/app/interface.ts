@@ -3,7 +3,7 @@ export interface booksFrame{
   counterNo?: number | null;
   cashierName?: string;
   orderDate?: Date ;
-  refund?: boolean;
+  refund?: string;
   noRefund?:boolean;
   discount?: boolean;
   // discountON ?:boolean
